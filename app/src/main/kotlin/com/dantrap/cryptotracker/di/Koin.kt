@@ -1,4 +1,4 @@
-package com.dantrap.template.di
+package com.dantrap.cryptotracker.di
 
 import android.app.Application
 import com.core.common.di.dispatchersModule

@@ -1,7 +1,7 @@
-package com.dantrap.template
+package com.dantrap.cryptotracker
 
 import android.app.Application
-import com.dantrap.template.di.initKoin
+import com.dantrap.cryptotracker.di.initKoin
 
 class App : Application() {
 

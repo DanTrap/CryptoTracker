@@ -4,8 +4,8 @@ plugins {
 }
 
 android {
-    namespace = "com.dantrap.template"
-    defaultConfig.applicationId = "com.dantrap.template"
+    namespace = "com.dantrap.cryptotracker"
+    defaultConfig.applicationId = "com.dantrap.cryptotracker"
     androidResources.generateLocaleConfig = true
 }
 

@@ -29,7 +29,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "template"
+rootProject.name = "CryptoTracker"
 
 include(":app")
 include(":core:ui")

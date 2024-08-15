@@ -1,4 +1,4 @@
-package com.dantrap.template.navigation
+package com.dantrap.cryptotracker.navigation
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
