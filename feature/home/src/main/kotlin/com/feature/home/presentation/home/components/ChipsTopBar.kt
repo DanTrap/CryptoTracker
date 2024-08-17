@@ -125,7 +125,7 @@ private fun CurrencyChip(
             labelColor = AppTheme.colors.black.copy(alpha = 0.87f),
             selectedLabelColor = AppTheme.colors.honeyWax,
             containerColor = AppTheme.colors.black.copy(alpha = 0.12f),
-            selectedContainerColor = AppTheme.colors.mandarinPeel
+            selectedContainerColor = AppTheme.colors.mandarinPeel.copy(alpha = 0.18f)
         )
     )
 }
