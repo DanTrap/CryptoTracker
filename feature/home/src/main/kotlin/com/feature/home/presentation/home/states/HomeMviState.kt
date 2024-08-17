@@ -1,6 +1,7 @@
 package com.feature.home.presentation.home.states
 
 import androidx.compose.runtime.Immutable
+import com.core.common.network.ResponseError
 import com.core.domain.model.Coin
 import com.feature.home.model.Currency
 
@@ -8,6 +9,7 @@ import com.feature.home.model.Currency
 data class HomeState(
     val isLoading: Boolean = false,
     val isError: Boolean = false,
+    val responseError: ResponseError? = null,
     val coins: List<Coin> = emptyList(),
     val currency: Currency = Currency.USD,
 )

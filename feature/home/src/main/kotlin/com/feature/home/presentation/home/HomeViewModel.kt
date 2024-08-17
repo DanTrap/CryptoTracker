@@ -38,7 +38,7 @@ class HomeViewModel(
             .onEach { resource ->
                 when (resource) {
                     is Resource.Error -> reducer {
-                        state.copy(isError = true, isLoading = false)
+                        state.copy(isError = true, isLoading = false, responseError = resource.error)
                     }
 
                     Resource.Loading -> reducer {
