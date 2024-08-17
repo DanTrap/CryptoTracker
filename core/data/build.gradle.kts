@@ -8,10 +8,13 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":core:network"))
     implementation(project(":core:common"))
+    implementation(project(":core:database"))
 
     implementation(libs.appcompat)
 
     implementation(libs.koin.android)
 
     implementation(libs.datastore.preferences)
+
+    implementation(libs.ktor.client.core)
 }

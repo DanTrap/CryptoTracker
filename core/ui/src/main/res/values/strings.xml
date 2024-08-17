@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Home screen-->
+    <string name="price_format">%1$s %2$s</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="try_again">Try Again</string>
+    <string name="loading_error_snackbar_message">An error occurred during loading</string>
+    <string name="list_of_cryptocurrencies">List of cryptocurrencies</string>
+    <string name="loading_error_dialog_message">Some kind of error occurred :(\nShall we try again?</string>
+
     <!--Settings screen-->
     <string name="terms_of_use">Terms of use</string>
     <string name="privacy_policy">Privacy policy</string>

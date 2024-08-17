@@ -8,7 +8,7 @@ import androidx.compose.runtime.ReadOnlyComposable
 @Composable
 fun AppTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colorScheme = DarkColorScheme,
+        colorScheme = LightColorScheme,
         typography = Typography,
     ) {
         CompositionLocalProvider(

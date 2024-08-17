@@ -1,7 +1,8 @@
 package com.core.common.network
 
-sealed class Resource<T> {
-    class Success<T>(val data: T) : Resource<T>()
-    class Error<T>(val error: ResponseError) : Resource<T>()
-    class Loading<T> : Resource<T>()
+sealed interface Resource<out T> {
+    data class Success<out T>(val data: T) : Resource<T>
+    data class FromCache<out T>(val data: T) : Resource<T>
+    data class Error(val error: ResponseError) : Resource<Nothing>
+    data object Loading : Resource<Nothing>
 }
