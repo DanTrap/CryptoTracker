@@ -1,9 +1,10 @@
 package com.core.data.repository
 
+import android.util.Log
 import com.core.common.network.Resource
-import com.core.common.network.ResponseError
 import com.core.data.mappers.toDomain
 import com.core.data.mappers.toEntity
+import com.core.data.mappers.toResponseError
 import com.core.data.source.local.CoinsLocalDataSource
 import com.core.data.source.remote.CoinsRemoteDataSource
 import com.core.database.model.CoinEntity
@@ -28,14 +29,13 @@ internal class CoinsRepositoryImpl(
                 it.toEntity(currency)
             })
             emit(Resource.Success(remoteCoins.map(CoinDto::toDomain)))
-        } catch (e: Exception) {
+        } catch (e: Throwable) {
             e.printStackTrace()
             val cached = coinsLocalDataSource.coins(currency).map(CoinEntity::toDomain)
             if (cached.isNotEmpty()) {
                 emit(Resource.FromCache(cached))
             } else {
-                //todo
-                emit(Resource.Error(ResponseError.SSL))
+                emit(Resource.Error(e.toResponseError()))
             }
         }
     }.flowOn(Dispatchers.IO)
