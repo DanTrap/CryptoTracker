@@ -18,7 +18,7 @@ data class CoinDto(
     @SerialName("atl_date")
     val atlDate: String,
     @SerialName("circulating_supply")
-    val circulatingSupply: Long,
+    val circulatingSupply: Double,
     @SerialName("current_price")
     val currentPrice: Double,
     @SerialName("fully_diluted_valuation")
@@ -42,7 +42,7 @@ data class CoinDto(
     @SerialName("market_cap_rank")
     val marketCapRank: Long,
     @SerialName("max_supply")
-    val maxSupply: Long?,
+    val maxSupply: Double?,
     @SerialName("name")
     val name: String,
     @SerialName("price_change_24h")
@@ -52,7 +52,7 @@ data class CoinDto(
     @SerialName("symbol")
     val symbol: String,
     @SerialName("total_supply")
-    val totalSupply: Long,
+    val totalSupply: Double,
     @SerialName("total_volume")
     val totalVolume: Long,
 )
