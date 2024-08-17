@@ -30,9 +30,9 @@ import com.feature.home.model.Currency
 
 @Composable
 fun ChipsTopBar(
-    modifier: Modifier = Modifier,
     title: String,
     selectedCurrency: Currency,
+    modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
     shadowElevation: Dp = 4.dp,
     actions: @Composable RowScope.() -> Unit = {},
@@ -40,11 +40,13 @@ fun ChipsTopBar(
 ) {
     Box(
         Modifier
-            .clip(GenericShape { size, _ ->
-                lineTo(size.width, 0f)
-                lineTo(size.width, Float.MAX_VALUE)
-                lineTo(0f, Float.MAX_VALUE)
-            })
+            .clip(
+                GenericShape { size, _ ->
+                    lineTo(size.width, 0f)
+                    lineTo(size.width, Float.MAX_VALUE)
+                    lineTo(0f, Float.MAX_VALUE)
+                }
+            )
             .shadow(shadowElevation)
     ) {
         Column(
@@ -137,6 +139,5 @@ private fun ChipsTopBarPrev() {
         title = "List of cryptocurrencies",
         selectedCurrency = Currency.USD
     ) {
-
     }
 }

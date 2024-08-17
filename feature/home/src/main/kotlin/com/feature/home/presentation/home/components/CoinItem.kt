@@ -150,6 +150,5 @@ private fun CoinItemPrev() {
         ),
         currency = Currency.USD
     ) {
-
     }
 }

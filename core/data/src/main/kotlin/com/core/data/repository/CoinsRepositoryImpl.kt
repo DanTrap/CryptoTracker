@@ -1,6 +1,5 @@
 package com.core.data.repository
 
-import android.util.Log
 import com.core.common.network.Resource
 import com.core.data.mappers.toDomain
 import com.core.data.mappers.toEntity
@@ -25,9 +24,11 @@ internal class CoinsRepositoryImpl(
         emit(Resource.Loading)
         try {
             val remoteCoins = coinsRemoteDataSource.getCoins(currency)
-            coinsLocalDataSource.saveCoins(remoteCoins.map {
-                it.toEntity(currency)
-            })
+            coinsLocalDataSource.saveCoins(
+                remoteCoins.map {
+                    it.toEntity(currency)
+                }
+            )
             emit(Resource.Success(remoteCoins.map(CoinDto::toDomain)))
         } catch (e: Throwable) {
             e.printStackTrace()
