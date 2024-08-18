@@ -30,12 +30,10 @@ object Home
 fun NavController.navigateToHome(navOptions: NavOptions) = navigate(Home, navOptions)
 
 fun NavGraphBuilder.homeScreen(
-    onNavigateToSettings: () -> Unit,
     onNavigateToDetails: (id: String) -> Unit,
 ) {
     composable<Home> {
         HomeRoute(
-            onNavigateToSettings = onNavigateToSettings,
             onNavigateToDetails = onNavigateToDetails
         )
     }
@@ -46,7 +44,6 @@ fun NavGraphBuilder.homeScreen(
 internal fun HomeRoute(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = koinViewModel(),
-    onNavigateToSettings: () -> Unit,
     onNavigateToDetails: (id: String) -> Unit,
 ) {
     val state = viewModel.collectAsState().value
@@ -66,7 +63,6 @@ internal fun HomeRoute(
 
     viewModel.collectSideEffect {
         when (it) {
-            HomeSideEffect.NavigateToSettings -> onNavigateToSettings()
             is HomeSideEffect.NavigateToDetails -> onNavigateToDetails(it.id)
             HomeSideEffect.RefreshEnd -> pullToRefreshState.endRefresh()
             HomeSideEffect.RefreshError -> scope.launch {

@@ -26,7 +26,6 @@ class HomeViewModel(
 
     override fun onEvent(event: HomeEvent) {
         when (event) {
-            HomeEvent.OnSettingsClick -> navigateToSettings()
             is HomeEvent.OnCoinClick -> navigateToCoinDetails(event.coin)
             is HomeEvent.OnRefresh -> fetchCoins(event.currency, true)
             is HomeEvent.OnChipClick -> updateCurrentCurrency(event.currency)
@@ -61,8 +60,6 @@ class HomeViewModel(
         fetchCoins(currency)
         state.copy(coins = emptyList(), currency = currency)
     }
-
-    private fun navigateToSettings() = emitSideEffect(HomeSideEffect.NavigateToSettings)
 
     private fun navigateToCoinDetails(coin: Coin) =
         emitSideEffect(HomeSideEffect.NavigateToDetails(coin.id))

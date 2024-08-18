@@ -9,7 +9,6 @@ import com.core.domain.di.domainModule
 import com.core.network.di.networkModule
 import com.feature.details.di.featureDetailsModule
 import com.feature.home.di.featureHomeModule
-import com.feature.settings.di.featureSettingsModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -26,7 +25,6 @@ fun Application.initKoin() = startKoin {
         datastoreModule,
         databaseModule,
         featureHomeModule,
-        featureSettingsModule,
         featureDetailsModule,
     )
 }
