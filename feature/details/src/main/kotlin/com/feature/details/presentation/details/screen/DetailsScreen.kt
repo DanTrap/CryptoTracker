@@ -45,7 +45,7 @@ fun DetailsScreen(
         }
     ) { padding ->
         Box(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
         ) {
