@@ -12,6 +12,6 @@ internal object ApiConstants {
     }
 
     object Headers {
-        const val API_KEY = "per_page"
+        const val API_KEY = "x-cg-demo-api-key"
     }
 }
