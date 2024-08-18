@@ -13,6 +13,7 @@ plugins {
     alias(libs.plugins.convetion.application) apply false
     alias(libs.plugins.convetion.compose.lib) apply false
     alias(libs.plugins.convetion.compose.app) apply false
+    alias(libs.plugins.convetion.api.key.provider) apply false
 
     alias(libs.plugins.convetion.detekt)
 }
