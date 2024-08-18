@@ -33,28 +33,39 @@ class HomeViewModel(
     }
 
     private fun fetchCoins(currency: Currency, isRefreshing: Boolean = false) =
-        getCoinsMarketUseCase(currency.name.lowercase())
-            .onEach { resource ->
+        getCoinsMarketUseCase(currency.name.lowercase()).onEach { resource ->
+            intent {
                 when (resource) {
-                    is Resource.Error -> reducer {
-                        state.copy(isError = true, isLoading = false, responseError = resource.error)
+                    is Resource.Error -> reduce {
+                        state.copy(
+                            isError = true,
+                            isLoading = false,
+                            responseError = resource.error
+                        )
                     }
 
-                    Resource.Loading -> reducer {
+                    Resource.Loading -> reduce {
                         state.copy(isLoading = true, coins = emptyList(), isError = false)
                     }
 
-                    is Resource.Success -> reducer {
+                    is Resource.Success -> reduce {
                         state.copy(coins = resource.data, isLoading = false, isError = false)
                     }
 
-                    is Resource.FromCache -> reducer {
-                        if (isRefreshing) emitSideEffect(HomeSideEffect.RefreshError)
-                        state.copy(coins = resource.data, isLoading = false, isError = false)
+                    is Resource.FromCache -> {
+                        if (isRefreshing) postSideEffect(HomeSideEffect.RefreshError)
+                        reduce {
+                            state.copy(
+                                coins = resource.data,
+                                isLoading = false,
+                                isError = false
+                            )
+                        }
                     }
                 }
-                emitSideEffect(HomeSideEffect.RefreshEnd)
-            }.launchIn(viewModelScope)
+                postSideEffect(HomeSideEffect.RefreshEnd)
+            }
+        }.launchIn(viewModelScope)
 
     private fun updateCurrentCurrency(currency: Currency) = reducer {
         fetchCoins(currency)

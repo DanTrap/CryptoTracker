@@ -42,6 +42,7 @@ annotation = "1.8.2"
 savedstate = "2.8.4"
 supabase = "2.5.2"
 ktor = "2.3.12"
+mockk = "1.13.12"
 
 [libraries]
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
@@ -93,6 +94,7 @@ one-signal = { module = "com.onesignal:OneSignal", version.ref = "oneSignal" }
 
 orbit-viewmodel = { module = "org.orbit-mvi:orbit-viewmodel", version.ref = "orbit" }
 orbit-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbit" }
+
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 
@@ -124,6 +126,9 @@ androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk"}
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines"}
+orbit-test = { module = "org.orbit-mvi:orbit-test", version.ref = "orbit" }
 
 [bundles]
 ktor = [
