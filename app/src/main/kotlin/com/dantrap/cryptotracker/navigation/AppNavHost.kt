@@ -6,6 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.feature.details.navigation.Details
+import com.feature.details.navigation.detailsScreen
 import com.feature.home.navigation.Home
 import com.feature.home.navigation.homeScreen
 import com.feature.settings.navigation.navigateToSettings
@@ -25,7 +27,11 @@ internal fun AppNavHost(
         exitTransition = { ExitTransition.None }
     ) {
         homeScreen(
-            onNavigateToSettings = navController::navigateToSettings
+            onNavigateToSettings = navController::navigateToSettings,
+            onNavigateToDetails = { navController.navigate(Details(it)) }
+        )
+        detailsScreen(
+            onNavigateBack = navController::navigateUp
         )
         settingsGraph(navController)
     }
