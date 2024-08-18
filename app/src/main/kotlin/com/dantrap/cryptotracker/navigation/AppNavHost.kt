@@ -10,8 +10,6 @@ import com.feature.details.navigation.Details
 import com.feature.details.navigation.detailsScreen
 import com.feature.home.navigation.Home
 import com.feature.home.navigation.homeScreen
-import com.feature.settings.navigation.navigateToSettings
-import com.feature.settings.navigation.settingsGraph
 
 @Composable
 internal fun AppNavHost(
@@ -27,12 +25,10 @@ internal fun AppNavHost(
         exitTransition = { ExitTransition.None }
     ) {
         homeScreen(
-            onNavigateToSettings = navController::navigateToSettings,
             onNavigateToDetails = { navController.navigate(Details(it)) }
         )
         detailsScreen(
             onNavigateBack = navController::navigateUp
         )
-        settingsGraph(navController)
     }
 }

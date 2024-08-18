@@ -19,7 +19,6 @@ dependencies {
     implementation(project(":core:database"))
     implementation(project(":core:datastore"))
     implementation(project(":feature:home"))
-    implementation(project(":feature:settings"))
     implementation(project(":feature:details"))
 
     implementation(libs.activity.compose)
