@@ -11,12 +11,13 @@ import com.core.domain.model.Coin
 import com.core.domain.model.CoinDetails
 import com.core.domain.repository.CoinsRepository
 import com.core.network.model.CoinDto
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 internal class CoinsRepositoryImpl(
+    private val dispatcher: CoroutineDispatcher,
     private val coinsRemoteDataSource: CoinsRemoteDataSource,
     private val coinsLocalDataSource: CoinsLocalDataSource,
 ) : CoinsRepository {
@@ -39,7 +40,7 @@ internal class CoinsRepositoryImpl(
                 emit(Resource.Error(e.toResponseError()))
             }
         }
-    }.flowOn(Dispatchers.IO)
+    }.flowOn(dispatcher)
 
     override fun getCoinDetails(id: String): Flow<Resource<CoinDetails>> = flow {
         emit(Resource.Loading)
@@ -55,5 +56,5 @@ internal class CoinsRepositoryImpl(
                 emit(Resource.Error(e.toResponseError()))
             }
         }
-    }.flowOn(Dispatchers.IO)
+    }.flowOn(dispatcher)
 }
