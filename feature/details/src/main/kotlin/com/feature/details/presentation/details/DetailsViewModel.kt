@@ -39,7 +39,12 @@ class DetailsViewModel(
             }
 
             is Resource.Success -> reducer {
-                state.copy(coinDetails = resource.data, isLoading = false, isError = false)
+                state.copy(
+                    coinDetails = resource.data,
+                    isLoading = false,
+                    isError = false,
+                    responseError = null
+                )
             }
 
             is Resource.FromCache -> reducer {
