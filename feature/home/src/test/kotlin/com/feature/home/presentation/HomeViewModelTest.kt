@@ -169,10 +169,10 @@ class HomeViewModelTest {
             responseError = null,
             currency = Currency.RUB
         )
-        val firstEmition = flowOf(Resource.Success(expectedFirstList))
-        val secondEmition = flowOf(Resource.Success(expectedSecondList))
-        every { getCoinsMarketUseCase("usd") } returns firstEmition
-        every { getCoinsMarketUseCase("rub") } returns secondEmition
+        val firstEmission = flowOf(Resource.Success(expectedFirstList))
+        val secondEmission = flowOf(Resource.Success(expectedSecondList))
+        every { getCoinsMarketUseCase("usd") } returns firstEmission
+        every { getCoinsMarketUseCase("rub") } returns secondEmission
 
         HomeViewModel(getCoinsMarketUseCase).test(this, HomeState()) {
             expectInitialState()
