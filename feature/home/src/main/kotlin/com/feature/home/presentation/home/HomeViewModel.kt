@@ -3,7 +3,7 @@ package com.feature.home.presentation.home
 import androidx.lifecycle.viewModelScope
 import com.core.common.network.Resource
 import com.core.domain.model.Coin
-import com.core.domain.repository.CoinsRepository
+import com.core.domain.usecase.GetCoinsMarketUseCase
 import com.core.mvi.BaseViewModel
 import com.core.mvi.emitSideEffect
 import com.core.mvi.reducer
@@ -15,10 +15,14 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 class HomeViewModel(
-    private val coinsRepository: CoinsRepository,
+    private val getCoinsMarketUseCase: GetCoinsMarketUseCase,
 ) : BaseViewModel<HomeState, HomeSideEffect, HomeEvent>(
     initialState = HomeState()
 ) {
+
+    init {
+        fetchCoins(Currency.USD)
+    }
 
     override fun onEvent(event: HomeEvent) {
         when (event) {
@@ -29,12 +33,8 @@ class HomeViewModel(
         }
     }
 
-    init {
-        fetchCoins(Currency.USD)
-    }
-
     private fun fetchCoins(currency: Currency, isRefreshing: Boolean = false) =
-        coinsRepository.coins(currency.name.lowercase())
+        getCoinsMarketUseCase(currency.name.lowercase())
             .onEach { resource ->
                 when (resource) {
                     is Resource.Error -> reducer {

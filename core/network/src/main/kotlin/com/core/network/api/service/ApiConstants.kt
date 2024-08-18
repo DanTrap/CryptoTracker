@@ -4,6 +4,7 @@ internal object ApiConstants {
     object Endpoints {
         const val BASE_URL = "https://api.coingecko.com/api/v3/"
         const val COINS_MARKET_PATH = "coins/markets"
+        const val COIN_DETAILS_PATH = "coins"
     }
 
     object Params {
@@ -12,6 +13,6 @@ internal object ApiConstants {
     }
 
     object Headers {
-        const val API_KEY = "per_page"
+        const val API_KEY = "x-cg-demo-api-key"
     }
 }

@@ -1,6 +1,5 @@
 package com.feature.home.presentation.home.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,21 +11,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
 import com.core.domain.model.Coin
 import com.core.ui.R
+import com.core.ui.components.CoilImage
 import com.core.ui.theme.AppTheme
 import com.feature.home.model.Currency
 import com.feature.home.util.formatCurrentPrice
 import com.feature.home.util.formatPricePercentage
-import kotlinx.coroutines.Dispatchers
 
 @Composable
 internal fun CoinItem(
@@ -42,7 +38,7 @@ internal fun CoinItem(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        CoinImage(
+        CoilImage(
             modifier = Modifier.size(48.dp),
             imageUrl = coin.image,
             contentDescription = coin.name
@@ -58,24 +54,6 @@ internal fun CoinItem(
             priceChangePercentage24h = coin.priceChangePercentage24h
         )
     }
-}
-
-@Composable
-private fun CoinImage(
-    imageUrl: String,
-    contentDescription: String,
-    modifier: Modifier = Modifier,
-) {
-    val context = LocalContext.current
-    val request = ImageRequest.Builder(context)
-        .data(imageUrl)
-        .dispatcher(Dispatchers.IO)
-        .build()
-    Image(
-        modifier = modifier,
-        painter = rememberAsyncImagePainter(model = request),
-        contentDescription = contentDescription
-    )
 }
 
 @Composable
