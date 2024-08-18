@@ -1,5 +1,6 @@
 package com.core.network.di
 
+import com.core.network.BuildConfig
 import com.core.network.api.service.ApiConstants
 import com.core.network.api.service.CoinService
 import com.core.network.api.service.CoinServiceImpl
@@ -49,7 +50,7 @@ internal fun Module.provideKtorClient(): KoinDefinition<HttpClient> = single {
             )
         }
         defaultRequest {
-            header(ApiConstants.Headers.API_KEY, "CG-HtDegTZ6jrzWPVHBoVMFe8Ko ")
+            header(ApiConstants.Headers.API_KEY, BuildConfig.API_KEY)
             url(ApiConstants.Endpoints.BASE_URL)
         }
     }

@@ -38,5 +38,9 @@ gradlePlugin {
             id = "convention.detekt"
             implementationClass = "DetektConventionPlugin"
         }
+        register("apiKeyProvider") {
+            id = "convention.api.key.provider"
+            implementationClass = "ApiKeyProviderConventionPlugin"
+        }
     }
 }

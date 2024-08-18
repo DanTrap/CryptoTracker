@@ -159,3 +159,4 @@ convetion-library = { id = "convention.android.library", version = "unspecified"
 convetion-compose-lib = { id = "convention.android.library.compose", version = "unspecified" }
 convetion-feature = { id = "convention.android.feature.library", version = "unspecified" }
 convetion-detekt = { id = "convention.detekt", version = "unspecified" }
+convetion-api-key-provider = { id = "convention.api.key.provider", version = "unspecified" }
